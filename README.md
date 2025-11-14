@@ -2,4 +2,4 @@
 -
 - 11-6 uploaded first flowchart and uml
 
-- 11-14 uploaded png of DodoWorld and my prototype code (zip file)
+- 11-14 uploaded png of DodoWorld (file name myWorld) and my prototype code (zip file)
