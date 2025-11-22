@@ -13,13 +13,75 @@ public class DodoWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
+    private int gemCount = 0;
+    public int totalScore = 0;
+    public int score = 0;
+    public int timer = 0;
+    private int timeLeft = 150;
+    private boolean timerStarted = false;
+    private boolean instructionsShown = true;
+    
+    
     public DodoWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 600, 1); 
+        super(600, 600, 1);
+        //showText("Time: " + timeLeft, 500, 60);
+        //showText("Gems: " + gemCount, 500, 75);
+        showInstructions();
         prepare();
     }
-    
+    private void showInstructions() {
+        showText("You are the Dodo. Use WSAD to control.", getWidth()/2, 300);
+        showText("Don't run into the hunter and collect all 4 gems to win!", getWidth()/2, 340);
+        showText("You get extra score if you complete before time runs out!", getWidth()/2, 380);
+    }
+    public void act() {
+        if (!timerStarted && (Greenfoot.isKeyDown("w") || Greenfoot.isKeyDown("a") ||
+                              Greenfoot.isKeyDown("s") || Greenfoot.isKeyDown("d"))) {
+            timerStarted = true;
+
+            // Remove instructions immediately when the player moves
+            if (instructionsShown) {
+                showText("", getWidth()/2, 300);
+                showText("", getWidth()/2, 340);
+                showText("", getWidth()/2, 380);
+                instructionsShown = false;
+            }
+        }
+        timer++;
+        if (timerStarted) {
+            showText("Gems: " + gemCount, 500, 70);
+            if (timer % 60 == 0 && timeLeft > 0) {
+                timeLeft--;
+                showText("Time: " + timeLeft, 500, 50);
+            }
+            if (timeLeft == 0) {
+                    timeLeft = 0; // no penalty
+            }
+        }    
+        
+    }
+    public void increaseGemCount() {
+        gemCount++;
+    }
+    public int getGemCount() {
+        return gemCount;
+    }
+    public int gettotalScore() {
+        return totalScore;
+    }
+    public void win() {
+        //showText("YOU WIN!", getWidth()/2, getHeight()/2);
+        totalScore = timeLeft * 100 + 400;
+        showText(" YOU WIN!!  ||  Score:" + totalScore, getWidth()/2, getHeight()/2);
+    }
+    public void lose() {
+        //showText("YOU LOST!", getWidth()/2, getHeight()/2);
+        totalScore = gemCount * 100;
+        showText(" YOU LOSE!!  || " + "Score:" + totalScore, getWidth()/2, getHeight()/2);
+    }
+
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -139,5 +201,17 @@ public class DodoWorld extends World
         addObject(boat,573,304);
         hunter hunter = new hunter();
         addObject(hunter,458,290);
+        hunter.setLocation(33,293);
+        rock7.setLocation(351,84);
+        rock8.setLocation(352,139);
+        rock9.setLocation(356,214);
+        rock27.setLocation(422,214);
+        rock26.setLocation(430,431);
+        rock25.setLocation(354,429);
+        rock24.setLocation(359,491);
+        rock23.setLocation(355,564);
+        rock22.setLocation(418,564);
+        rock21.setLocation(483,562);
+        rock20.setLocation(560,561);
     }
 }

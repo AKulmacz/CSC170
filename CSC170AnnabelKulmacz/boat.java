@@ -12,8 +12,19 @@ public class boat extends Actor
      * Act - do whatever the boat wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+    
     public void act()
     {
+        DodoWorld world = (DodoWorld) getWorld();
         // Add your action code here.
+        if (isTouching(Dodo.class) && world.getGemCount() == 4) {
+            world.win();
+            Greenfoot.stop();
+        }
+        else if (isTouching(Dodo.class) && world.getGemCount() != 4) {
+            world.lose();
+            Greenfoot.stop();
+        }
     }
 }
