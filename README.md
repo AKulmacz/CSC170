@@ -7,3 +7,4 @@
 - 11-21 animated all actors, game is in a beta state, have yet to add final touches, but hunter now moves in his set path, the gems can be collected, and there is win and lose conditions
  also added all text, such as instruction text which dissapears after you make your first move, timer and gem counter in upper right hand corner, and the win and lose screen
 
+- 12-9 Finalized 1.0.0 build. Added sound effects, cleaned up flowchart and UML, finished project.
