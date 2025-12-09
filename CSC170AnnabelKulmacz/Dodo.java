@@ -45,6 +45,7 @@ public class Dodo extends Actor
             }
         }
         if (isTouching(rock.class)) {
+            Greenfoot.playSound("bump.wav");
             if (Greenfoot.isKeyDown("d")) {
                 move (-2);
             }

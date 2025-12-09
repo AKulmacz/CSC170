@@ -18,6 +18,7 @@ public class gem extends Actor
     {
         // Add your action code here. 
         if (isTouching(Dodo.class)) {
+            Greenfoot.playSound("collect.wav");
             collect();
         }
     }

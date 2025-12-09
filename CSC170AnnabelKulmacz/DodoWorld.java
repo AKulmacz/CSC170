@@ -74,11 +74,13 @@ public class DodoWorld extends World
     public void win() {
         //showText("YOU WIN!", getWidth()/2, getHeight()/2);
         totalScore = timeLeft * 100 + 400;
+        Greenfoot.playSound("win.wav");
         showText(" YOU WIN!!  ||  Score:" + totalScore, getWidth()/2, getHeight()/2);
     }
     public void lose() {
         //showText("YOU LOST!", getWidth()/2, getHeight()/2);
         totalScore = gemCount * 100;
+        Greenfoot.playSound("lose.wav");
         showText(" YOU LOSE!!  || " + "Score:" + totalScore, getWidth()/2, getHeight()/2);
     }
 
